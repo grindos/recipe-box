@@ -7,13 +7,14 @@ import { showAddFormActionCreator } from '../actions';
 const RecipesList = ({ onClick, showAddForm, recipes }) => (
   <div className="RecipesList">
     <button
+      className="AddButton"
       type="button"
       onClick={e => {
         e.preventDefault();
         showAddForm();
       }}
     >
-      Add
+      <span className="AddButtonIcon" />
     </button>
     <div className="Recipes">
       {recipes.map(recipe => (

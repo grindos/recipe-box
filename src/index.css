@@ -101,3 +101,35 @@ textarea, input[type=text] {
   background-color: #000;
   opacity: 0.5;
 }
+
+.DeleteButton, .EditButton, .AddButton {
+  border: none;
+  background-color: #ebaa18;
+}
+
+.DeleteButtonIcon {
+  background: url('./icons/delete.svg');
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+}
+
+.AddButtonIcon {
+  background: url('./icons/add.svg');
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+}
+
+.EditButtonIcon {
+  background: url('./icons/edit.svg');
+  background-size: contain;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+}

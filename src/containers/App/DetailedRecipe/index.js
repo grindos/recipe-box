@@ -31,7 +31,7 @@ const DetailedRecipe = ({ recipe, deleteRecipe, editRecipe }) => {
             deleteRecipe(id);
           }}
         >
-          Delete
+          <span className="DeleteButtonIcon" />
         </button>
         <button
           className="EditButton"
@@ -41,7 +41,7 @@ const DetailedRecipe = ({ recipe, deleteRecipe, editRecipe }) => {
             editRecipe({ id, name, ingredients, directions });
           }}
         >
-          Edit
+          <span className="EditButtonIcon" />
         </button>
       </div>
       <div className="DetailedRecipeText">
