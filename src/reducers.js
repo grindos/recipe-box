@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux';
+import { v4 } from 'node-uuid';
 
-const defaultRecipes = [
+const getNextRecipeId = () => v4();
+
+const defaultRecipesState = [
   {
     name: 'Garlic Chicken',
     id: 1,
@@ -60,14 +63,7 @@ const defaultRecipes = [
   },
 ];
 
-let nextRecipeId = 4;
-const getNextRecipeId = () => {
-  const next = nextRecipeId;
-  nextRecipeId += 1;
-  return next;
-};
-
-const recipes = (state = defaultRecipes, action) => {
+const recipes = (state = defaultRecipesState, action) => {
   switch (action.type) {
     case 'ADD_RECIPE':
       return [

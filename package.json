@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://grindos.github.io/recipe-box/",
   "dependencies": {
+    "lodash": "^4.17.10",
+    "node-uuid": "^1.4.8",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
