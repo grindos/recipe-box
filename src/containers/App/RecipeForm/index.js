@@ -14,9 +14,9 @@ const RecipeForm = ({ form, hideForm, addRecipe, editRecipe }) => {
     return null;
   }
   return (
-    <form>
-      <label htmlFor="name">
-        Recipe name
+    <div>
+      <form className="ModalForm">
+        <h3>Recipe name</h3>
         <input
           id="name"
           type="text"
@@ -25,57 +25,54 @@ const RecipeForm = ({ form, hideForm, addRecipe, editRecipe }) => {
             nameInput = node;
           }}
         />
-      </label>
-      <label htmlFor="ingredients">
-        Ingredients
-        <input
-          id="ingredients"
-          type="text"
-          defaultValue={status === 'EDIT' ? ingredients.join('*') : ''}
+        <h3>Ingredients</h3>
+        <textarea
+          rows="10"
+          cols="40"
+          defaultValue={status === 'EDIT' ? ingredients.join('\n') : ''}
           ref={node => {
             ingredientsInput = node;
           }}
         />
-      </label>
-      <label htmlFor="directions">
-        Directions
-        <input
-          id="directions"
-          type="text"
-          defaultValue={status === 'EDIT' ? directions.join('*') : ''}
+        <h3>Directions</h3>
+        <textarea
+          rows="10"
+          cols="40"
+          defaultValue={status === 'EDIT' ? directions.join('\n') : ''}
           ref={node => {
             directionsInput = node;
           }}
         />
-      </label>
-      <input
-        type="submit"
-        value="Submit"
-        onClick={e => {
-          e.preventDefault();
-          hideForm();
-          switch (status) {
-            case 'ADD':
-              addRecipe({
-                name: nameInput.value,
-                ingredients: ingredientsInput.value.split('*'),
-                directions: directionsInput.value.split('*'),
-              });
-              break;
-            case 'EDIT':
-              editRecipe({
-                id,
-                name: nameInput.value,
-                ingredients: ingredientsInput.value.split('*'),
-                directions: directionsInput.value.split('*'),
-              });
-              break;
-            default:
-              break;
-          }
-        }}
-      />
-    </form>
+        <input
+          type="submit"
+          value="Submit"
+          onClick={e => {
+            e.preventDefault();
+            hideForm();
+            switch (status) {
+              case 'ADD':
+                addRecipe({
+                  name: nameInput.value,
+                  ingredients: ingredientsInput.value.split('\n'),
+                  directions: directionsInput.value.split('\n'),
+                });
+                break;
+              case 'EDIT':
+                editRecipe({
+                  id,
+                  name: nameInput.value,
+                  ingredients: ingredientsInput.value.split('\n'),
+                  directions: directionsInput.value.split('\n'),
+                });
+                break;
+              default:
+                break;
+            }
+          }}
+        />
+      </form>
+      <div className="ModalOverlay" />
+    </div>
   );
 };
 RecipeForm.propTypes = {

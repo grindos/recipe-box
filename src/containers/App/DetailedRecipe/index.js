@@ -8,6 +8,9 @@ const getChosenRecipe = (recipes, id) => {
   if (found.length > 0) {
     return found[0];
   }
+  if (recipes.length > 0) {
+    return recipes[0];
+  }
   return null;
 };
 
@@ -62,6 +65,7 @@ DetailedRecipe.propTypes = {
 
 const mapStateToProps = state => ({
   recipe: getChosenRecipe(state.recipes, state.chosenRecipe),
+  anotherRecipeId: state.recipes.length > 0 ? state.recipes[0].id : null,
 });
 
 const mapDispatchToProps = dispatch => ({

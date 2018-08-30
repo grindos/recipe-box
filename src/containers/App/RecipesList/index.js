@@ -15,23 +15,25 @@ const RecipesList = ({ onClick, showAddForm, recipes }) => (
     >
       Add
     </button>
-    {recipes.map(recipe => (
-      <button
-        type="button"
-        className="Recipe"
-        key={`recipe-id-${recipe.id}`}
-        onClick={e => {
-          e.preventDefault();
-          onClick(recipe.id);
-        }}
-        onKeyPress={e => {
-          e.preventDefault();
-          onClick(recipe.id);
-        }}
-      >
-        {recipe.name}
-      </button>
-    ))}
+    <div className="Recipes">
+      {recipes.map(recipe => (
+        <button
+          type="button"
+          className="Recipe"
+          key={`recipe-id-${recipe.id}`}
+          onClick={e => {
+            e.preventDefault();
+            onClick(recipe.id);
+          }}
+          onKeyPress={e => {
+            e.preventDefault();
+            onClick(recipe.id);
+          }}
+        >
+          {recipe.name}
+        </button>
+      ))}
+    </div>
   </div>
 );
 RecipesList.propTypes = {

@@ -4,10 +4,12 @@ import RecipesList from './RecipesList';
 import RecipeForm from './RecipeForm';
 
 const App = () => (
-  <div>
+  <div className="App">
     <h1>Recipe Box</h1>
-    <RecipesList />
-    <DetailedRecipe />
+    <div className="AppContainer">
+      <RecipesList />
+      <DetailedRecipe />
+    </div>
     <RecipeForm />
   </div>
 );
