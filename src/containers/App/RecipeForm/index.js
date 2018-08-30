@@ -71,7 +71,17 @@ const RecipeForm = ({ form, hideForm, addRecipe, editRecipe }) => {
           }}
         />
       </form>
-      <div className="ModalOverlay" />
+      <div
+        className="ModalOverlay"
+        role="button"
+        tabIndex="0"
+        onClick={() => {
+          hideForm();
+        }}
+        onKeyPress={() => {
+          hideForm();
+        }}
+      />
     </div>
   );
 };
