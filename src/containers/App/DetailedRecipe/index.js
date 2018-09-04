@@ -2,17 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteRecipeActionCreator, editRecipeActionCreator } from './actions';
-
-const getChosenRecipe = (recipes, id) => {
-  const found = recipes.filter(recipe => recipe.id === id);
-  if (found.length > 0) {
-    return found[0];
-  }
-  if (recipes.length > 0) {
-    return recipes[0];
-  }
-  return null;
-};
+import getRecipe from './selectors';
 
 const DetailedRecipe = ({ recipe, deleteRecipe, editRecipe }) => {
   if (!recipe) {
@@ -64,8 +54,7 @@ DetailedRecipe.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  recipe: getChosenRecipe(state.recipes, state.chosenRecipe),
-  anotherRecipeId: state.recipes.length > 0 ? state.recipes[0].id : null,
+  recipe: getRecipe(state),
 });
 
 const mapDispatchToProps = {

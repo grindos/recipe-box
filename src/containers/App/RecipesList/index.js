@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import recipeChosenActionCreator from './actions';
 import { showAddFormActionCreator } from '../actions';
+import getRecipes from './selectors';
 
 const RecipesList = ({ onClick, showAddForm, recipes }) => (
   <div className="RecipesList">
@@ -44,10 +45,7 @@ RecipesList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  recipes: state.recipes.map(recipe => ({
-    name: recipe.name,
-    id: recipe.id,
-  })),
+  recipes: getRecipes(state),
 });
 
 const mapDispatchToProps = {

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addRecipeActionCreator, editRecipeActionCreator } from './actions';
 import { hideFormActionCreator } from '../actions';
 import { HIDE, ADD, EDIT } from '../../../constants';
+import getForm from './selectors';
 
 const RecipeForm = ({ form, hideForm, addRecipe, editRecipe }) => {
   const { id, status, name, ingredients, directions } = form;
@@ -94,7 +95,7 @@ RecipeForm.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  form: state.form,
+  form: getForm(state),
 });
 
 const mapDispatchToProps = {
