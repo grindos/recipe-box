@@ -1,12 +1,14 @@
+import { ADD_RECIPE, EDIT_RECIPE } from '../../../constants';
+
 export const addRecipeActionCreator = ({ name, ingredients, directions }) => ({
-  type: 'ADD_RECIPE',
+  type: ADD_RECIPE,
   name,
   ingredients,
   directions,
 });
 
 export const editRecipeActionCreator = ({ id, name, ingredients, directions }) => ({
-  type: 'EDIT_RECIPE',
+  type: EDIT_RECIPE,
   id,
   name,
   ingredients,

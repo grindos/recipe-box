@@ -1,0 +1,10 @@
+export const ADD_RECIPE = 'ADD_RECIPE';
+export const EDIT_RECIPE = 'EDIT_RECIPE';
+export const DELETE_RECIPE = 'DELETE_RECIPE';
+export const RECIPE_CHOSEN = 'RECIPE_CHOSEN';
+export const HIDE = 'HIDE';
+export const ADD = 'ADD';
+export const EDIT = 'EDIT';
+export const SHOW_ADD_FORM = 'SHOW_ADD_FORM';
+export const SHOW_EDIT_FORM = 'SHOW_EDIT_FORM';
+export const HIDE_FORM = 'HIDE_FORM';

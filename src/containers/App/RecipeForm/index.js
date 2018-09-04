@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addRecipeActionCreator, editRecipeActionCreator } from './actions';
 import { hideFormActionCreator } from '../actions';
+import { HIDE, ADD, EDIT } from '../../../constants';
 
 const RecipeForm = ({ form, hideForm, addRecipe, editRecipe }) => {
   const { id, status, name, ingredients, directions } = form;
@@ -10,7 +11,7 @@ const RecipeForm = ({ form, hideForm, addRecipe, editRecipe }) => {
   let ingredientsInput;
   let directionsInput;
 
-  if (status === 'HIDE') {
+  if (status === HIDE) {
     return null;
   }
   return (
@@ -20,7 +21,7 @@ const RecipeForm = ({ form, hideForm, addRecipe, editRecipe }) => {
         <input
           id="name"
           type="text"
-          defaultValue={status === 'EDIT' ? name : ''}
+          defaultValue={status === EDIT ? name : ''}
           ref={node => {
             nameInput = node;
           }}
@@ -29,7 +30,7 @@ const RecipeForm = ({ form, hideForm, addRecipe, editRecipe }) => {
         <textarea
           rows="10"
           cols="40"
-          defaultValue={status === 'EDIT' ? ingredients.join('\n') : ''}
+          defaultValue={status === EDIT ? ingredients.join('\n') : ''}
           ref={node => {
             ingredientsInput = node;
           }}
@@ -38,7 +39,7 @@ const RecipeForm = ({ form, hideForm, addRecipe, editRecipe }) => {
         <textarea
           rows="10"
           cols="40"
-          defaultValue={status === 'EDIT' ? directions.join('\n') : ''}
+          defaultValue={status === EDIT ? directions.join('\n') : ''}
           ref={node => {
             directionsInput = node;
           }}
@@ -50,14 +51,14 @@ const RecipeForm = ({ form, hideForm, addRecipe, editRecipe }) => {
             e.preventDefault();
             hideForm();
             switch (status) {
-              case 'ADD':
+              case ADD:
                 addRecipe({
                   name: nameInput.value,
                   ingredients: ingredientsInput.value.split('\n'),
                   directions: directionsInput.value.split('\n'),
                 });
                 break;
-              case 'EDIT':
+              case EDIT:
                 editRecipe({
                   id,
                   name: nameInput.value,

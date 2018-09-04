@@ -1,5 +1,15 @@
 import { combineReducers } from 'redux';
 import { v4 } from 'node-uuid';
+import {
+  ADD_RECIPE,
+  EDIT_RECIPE,
+  DELETE_RECIPE,
+  RECIPE_CHOSEN,
+  HIDE,
+  SHOW_ADD_FORM,
+  SHOW_EDIT_FORM,
+  HIDE_FORM,
+} from './constants';
 
 const getNextRecipeId = () => v4();
 
@@ -65,7 +75,7 @@ const defaultRecipesState = [
 
 const recipes = (state = defaultRecipesState, action) => {
   switch (action.type) {
-    case 'ADD_RECIPE':
+    case ADD_RECIPE:
       return [
         ...state,
         {
@@ -75,7 +85,7 @@ const recipes = (state = defaultRecipesState, action) => {
           directions: action.directions,
         },
       ];
-    case 'EDIT_RECIPE':
+    case EDIT_RECIPE:
       return state.map(recipe => {
         if (recipe.id !== action.id) {
           return recipe;
@@ -88,7 +98,7 @@ const recipes = (state = defaultRecipesState, action) => {
           directions,
         };
       });
-    case 'DELETE_RECIPE':
+    case DELETE_RECIPE:
       return state.filter(recipe => recipe.id !== action.id);
     default:
       return state;
@@ -97,7 +107,7 @@ const recipes = (state = defaultRecipesState, action) => {
 
 const chosenRecipe = (state = 1, action) => {
   switch (action.type) {
-    case 'RECIPE_CHOSEN':
+    case RECIPE_CHOSEN:
       return action.id;
     default:
       return state;
@@ -105,7 +115,7 @@ const chosenRecipe = (state = 1, action) => {
 };
 
 const defaultFormState = {
-  status: 'HIDE',
+  status: HIDE,
   id: null,
   name: '',
   ingredients: [],
@@ -114,7 +124,7 @@ const defaultFormState = {
 
 const form = (state = defaultFormState, action) => {
   switch (action.type) {
-    case 'SHOW_ADD_FORM':
+    case SHOW_ADD_FORM:
       return {
         status: 'ADD',
         id: null,
@@ -122,7 +132,7 @@ const form = (state = defaultFormState, action) => {
         ingredients: [],
         directions: [],
       };
-    case 'SHOW_EDIT_FORM':
+    case SHOW_EDIT_FORM:
       const { id, name, ingredients, directions } = action;
       return {
         status: 'EDIT',
@@ -131,7 +141,7 @@ const form = (state = defaultFormState, action) => {
         ingredients,
         directions,
       };
-    case 'HIDE_FORM':
+    case HIDE_FORM:
       return Object.assign({}, defaultFormState);
     default:
       return state;
