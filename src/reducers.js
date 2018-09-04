@@ -5,6 +5,8 @@ import {
   EDIT_RECIPE,
   DELETE_RECIPE,
   RECIPE_CHOSEN,
+  ADD,
+  EDIT,
   HIDE,
   SHOW_ADD_FORM,
   SHOW_EDIT_FORM,
@@ -126,7 +128,7 @@ const form = (state = defaultFormState, action) => {
   switch (action.type) {
     case SHOW_ADD_FORM:
       return {
-        status: 'ADD',
+        status: ADD,
         id: null,
         name: '',
         ingredients: [],
@@ -135,14 +137,14 @@ const form = (state = defaultFormState, action) => {
     case SHOW_EDIT_FORM:
       const { id, name, ingredients, directions } = action;
       return {
-        status: 'EDIT',
+        status: EDIT,
         id,
         name,
         ingredients,
         directions,
       };
     case HIDE_FORM:
-      return Object.assign({}, defaultFormState);
+      return { ...defaultFormState };
     default:
       return state;
   }
