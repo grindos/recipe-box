@@ -68,13 +68,9 @@ const mapStateToProps = state => ({
   anotherRecipeId: state.recipes.length > 0 ? state.recipes[0].id : null,
 });
 
-const mapDispatchToProps = dispatch => ({
-  deleteRecipe: recipeId => {
-    dispatch(deleteRecipeActionCreator(recipeId));
-  },
-  editRecipe: recipe => {
-    dispatch(editRecipeActionCreator(recipe));
-  },
-});
+const mapDispatchToProps = {
+  deleteRecipe: deleteRecipeActionCreator,
+  editRecipe: editRecipeActionCreator,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailedRecipe);

@@ -50,13 +50,9 @@ const mapStateToProps = state => ({
   })),
 });
 
-const mapDispatchToProps = dispatch => ({
-  onClick: recipeId => {
-    dispatch(recipeChosenActionCreator(recipeId));
-  },
-  showAddForm: () => {
-    dispatch(showAddFormActionCreator());
-  },
-});
+const mapDispatchToProps = {
+  onClick: recipeChosenActionCreator,
+  showAddForm: showAddFormActionCreator,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipesList);

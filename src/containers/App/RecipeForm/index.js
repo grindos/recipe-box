@@ -96,16 +96,10 @@ const mapStateToProps = state => ({
   form: state.form,
 });
 
-const mapDispatchToProps = dispatch => ({
-  hideForm: () => {
-    dispatch(hideFormActionCreator());
-  },
-  addRecipe: recipe => {
-    dispatch(addRecipeActionCreator(recipe));
-  },
-  editRecipe: recipe => {
-    dispatch(editRecipeActionCreator(recipe));
-  },
-});
+const mapDispatchToProps = {
+  hideForm: hideFormActionCreator,
+  addRecipe: addRecipeActionCreator,
+  editRecipe: editRecipeActionCreator,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeForm);
