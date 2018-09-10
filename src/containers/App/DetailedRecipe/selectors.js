@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
-const selectRecipes = state => state.recipes;
-const selectChosenRecipe = state => state.chosenRecipe;
+const selectRecipes = state => state.recipeBook.recipes;
+const selectChosenRecipe = state => state.recipeBook.chosenRecipe;
 
 const selectRecipe = createSelector(
   [selectRecipes, selectChosenRecipe],

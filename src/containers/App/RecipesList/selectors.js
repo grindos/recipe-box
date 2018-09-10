@@ -1,4 +1,4 @@
-const selectRecipes = state => state.recipes.map(recipe => ({
+const selectRecipes = state => state.recipeBook.recipes.map(recipe => ({
   name: recipe.name,
   id: recipe.id,
 }));
