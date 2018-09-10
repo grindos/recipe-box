@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import recipeChosenActionCreator from './actions';
 import { showAddFormActionCreator } from '../actions';
-import getRecipes from './selectors';
+import selectRecipes from './selectors';
 
 const RecipesList = ({ onClick, showAddForm, recipes }) => (
   <div className="RecipesList">
@@ -44,8 +45,8 @@ RecipesList.propTypes = {
   recipes: PropTypes.array,
 };
 
-const mapStateToProps = state => ({
-  recipes: getRecipes(state),
+const mapStateToProps = createStructuredSelector({
+  recipes: selectRecipes,
 });
 
 const mapDispatchToProps = {

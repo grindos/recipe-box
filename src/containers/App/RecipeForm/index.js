@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import { addRecipeActionCreator, editRecipeActionCreator } from './actions';
 import { hideFormActionCreator } from '../actions';
 import { HIDE, ADD, EDIT } from '../../../constants';
-import getForm from './selectors';
+import selectForm from './selectors';
 
 const RecipeForm = ({ form, hideForm, addRecipe, editRecipe }) => {
   const { id, status, name, ingredients, directions } = form;
@@ -94,8 +95,8 @@ RecipeForm.propTypes = {
   editRecipe: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
-  form: getForm(state),
+const mapStateToProps = createStructuredSelector({
+  form: selectForm,
 });
 
 const mapDispatchToProps = {

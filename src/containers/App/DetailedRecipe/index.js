@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { createStructuredSelector } from 'reselect';
 import { deleteRecipeActionCreator, editRecipeActionCreator } from './actions';
-import getRecipe from './selectors';
+import selectRecipe from './selectors';
 
 const DetailedRecipe = ({ recipe, deleteRecipe, editRecipe }) => {
   if (!recipe) {
@@ -53,8 +54,8 @@ DetailedRecipe.propTypes = {
   editRecipe: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
-  recipe: getRecipe(state),
+const mapStateToProps = createStructuredSelector({
+  recipe: selectRecipe,
 });
 
 const mapDispatchToProps = {

@@ -1,3 +1,3 @@
-const getForm = state => state.form;
+const selectForm = state => state.form;
 
-export default getForm;
+export default selectForm;

@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
 
-const getRecipes = state => state.recipes;
-const getChosenRecipe = state => state.chosenRecipe;
+const selectRecipes = state => state.recipes;
+const selectChosenRecipe = state => state.chosenRecipe;
 
-const getRecipe = createSelector(
-  [getRecipes, getChosenRecipe],
+const selectRecipe = createSelector(
+  [selectRecipes, selectChosenRecipe],
   (recipes, chosenRecipe) => {
     const found = recipes.filter(recipe => recipe.id === chosenRecipe);
     if (found.length > 0) {
@@ -17,4 +17,4 @@ const getRecipe = createSelector(
   },
 );
 
-export default getRecipe;
+export default selectRecipe;
